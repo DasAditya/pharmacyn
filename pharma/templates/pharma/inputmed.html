@@ -1,0 +1,58 @@
+{% extends 'pharma/base_template.html' %}
+
+{%  block body %}
+</br></br></br>
+
+    <div class="container-fluid">
+
+            <div class="row">
+
+                <div class="col-md-8 offset-md-2">
+                    <div class="jumbotron">
+    <form role="form" action="{% url 'pharma:addmed' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+<h6 class="display-4">Enter Details</h6>
+
+<div class="form-group row">
+  <label for="name" class="col-2 col-form-label">Name</label>
+  <div class="col-10">
+    <input class="form-control" type="text"  id="name" name="name">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="qualification" class="col-2 col-form-label">Manufacture</label>
+  <div class="col-10">
+    <input class="form-control" type="text"  id="manu_date" name="manu_date">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="composition" class="col-2 col-form-label">Composition</label>
+  <div class="col-10">
+    <input class="form-control" type="text"  id="composition" name="composition">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="expiry" class="col-2 col-form-label">Expiry</label>
+  <div class="col-10">
+    <input class="form-control" type="text"  id="expiry" name="exp_date">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="price" class="col-2 col-form-label">Price</label>
+  <div class="col-10">
+    <input class="form-control" type="text"  id="price" name="price">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="qty" class="col-2 col-form-label">Qty</label>
+  <div class="col-10">
+    <input class="form-control" type="text"  id="qty" name="qty">
+  </div>
+</div>
+    <div class="form-group row" align="center">
+     <button type="submit" class="btn btn-default">Submit</button>
+ </div>
+    </form>
+
+
+{% endblock %}

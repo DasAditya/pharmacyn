@@ -1,0 +1,64 @@
+{% extends 'pharma/base_template.html' %}
+
+{%  block body %}
+<style>.change-icon > .fa + .fa,
+.change-icon:hover > .fa {display: none;}
+.change-icon:hover > .fa + .fa {display: inherit; cursor: pointer;}</style>
+<div class="container-fluid">
+</br></br></br></br>
+<div class="row">
+<div class="col-md-10 offset-md-1">
+<div class="jumbotron-fluid">
+
+<div class="jumbotron" style="background-color:#F5F5F5">
+  <div class="container">
+  <div class="btn-group" style="float:right;" role="group" aria-label="Basic example">
+  <button type="button" style="color:black;"class="btn {% if site == 'Andheri' %} active {% endif %} btn-outline-secondary"><a style="text-decoration:none; color:black;"href="{% url 'pharma:dispstaff' 'Andheri' %}">Andheri</a></button>
+  <button type="button" style="color:black;"class="btn {% if site == 'Kandivali' %} active {% endif %}btn btn-outline-secondary"><a style="text-decoration:none; color:black;"href="{% url 'pharma:dispstaff' 'Kandivali' %}">Kandivali</a></button>
+  <button type="button" style="color:black;"class="btn btn {% if site == 'Our' %} active {% endif %}btn-outline-secondary"><a style="text-decoration:none; color:black;"href="{% url 'pharma:staff' %}">Powai</a></button>
+</div>
+    <h1 class="display-4">{{ site }} Staff</h1></br>
+	<table class="table table-hover">
+  <thead class="thead-default">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+        {% for s in staffs %}
+  <tbody>
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ s.name}}</td>
+      <td>{{ s.age }}</td>
+      <td>{{ s.loc }}
+      <a href="{% url 'pharma:delstaffs' s.id %}"><span style="color:red ;float:right;" class="change-icon">
+            <i class="fa fa-trash-o"></i>
+            <i class="fa fa-trash"></i>
+
+        </span></a></td>
+    </tr>
+  </tbody>
+        {% endfor %}
+</table>
+</br>
+  <a href="{% url 'pharma:addstaffs' %}">
+  <button class="btn btn-outline-primary" style="float:right;">
++
+</button>
+      </a>
+
+  </div>
+</div>
+</div>
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>.
+</div>
+</div>
+
+
+
+</div>
+
+{% endblock %}

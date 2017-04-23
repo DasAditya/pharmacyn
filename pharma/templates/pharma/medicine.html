@@ -1,0 +1,68 @@
+{% extends 'pharma/base_template.html' %}
+
+{%  block body %}
+<style>.change-icon > .fa + .fa,
+.change-icon:hover > .fa {display: none;}
+.change-icon:hover > .fa + .fa {display: inherit; cursor: pointer;}</style>
+<div class="container-fluid">
+</br></br></br></br>
+<div class="row">
+<div class="col-md-10 offset-md-1">
+<div class="jumbotron-fluid">
+
+<div class="jumbotron" style="background-color:#F5F5F5">
+  <div class="container">
+  <div class="btn-group" style="float:right;" role="group" aria-label="Basic example">
+  <button type="button" style="color:black;"class="btn {% if site == 'Andheri' %} active {% endif %} btn-outline-secondary"><a style="text-decoration:none; color:black;"href="{% url 'pharma:dispmeds' 'Andheri' %}">Andheri</a></button>
+  <button type="button" style="color:black;"class="btn {% if site == 'Kandivali' %} active {% endif %}btn btn-outline-secondary"><a style="text-decoration:none; color:black;"href="{% url 'pharma:dispmeds' 'Kandivali' %}">Kandivali</a></button>
+  <button type="button" style="color:black;"class="btn btn {% if site == 'Our' %} active {% endif %}btn-outline-secondary"><a style="text-decoration:none; color:black;"href="{% url 'pharma:medicine' %}">Powai</a></button>
+</div>
+    <h1 class="display-4">{{ site }} Medicine</h1></br>
+	<table class="table table-hover">
+  <thead class="thead-default">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Composition</th>
+      <th>Manufacture</th>
+      <th>Expiry</th>
+      <th>Price</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+        {% for m in medicines %}
+  <tbody>
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{ m.name}}</td>
+      <td>{{ m.composition}}</td>
+      <td>{{ m.manu_date }}</td>
+      <td>{{ m.exp_date }}</td>
+      <td>{{ m.price }}</td>
+      <td>{{ m.quantity }}<a href="{% url 'pharma:delmeds' m.id %}"><span style="color:red ;float:right;" class="change-icon">
+            <i class="fa fa-trash-o"></i>
+            <i class="fa fa-trash"></i>
+
+        </span></a></td>
+    </tr>
+  </tbody>
+        {% endfor %}
+</table></br>
+  <a href="{% url 'pharma:addmeds' %}">
+  <button class="btn btn-outline-primary" style="float:right;">
++
+</button>
+      </a>
+  </div>
+</div>
+</div>
+
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>.
+</div>
+</div>
+
+
+
+</div>
+
+{% endblock %}
